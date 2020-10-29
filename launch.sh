@@ -24,7 +24,7 @@ echo "You set $blackscreen as blackscreen preferences for your receiver!"
 
 sleep 0.5
 
-read -p "Do you want to enable debug logging? This will lead to choppy playback due to heavy console output"  debug
+read -p "Do you want to enable debug logging? This will lead to choppy playback due to heavy console output: "  debug
 sleep 0.1
 
 if [debug == "y"] 
