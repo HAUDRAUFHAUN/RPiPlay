@@ -40,6 +40,10 @@ fi
 if ["$d" = true] 
 then
     ./build/rpiplay -n "$devicename" -a "$audio" -f "$imageflipping" -b "$blackscreen" -d
+    sleep 0.1
+    echo "Your airplay server started succesfully"
 else
     ./build/rpiplay -n "$devicename" -a "$audio" -f "$imageflipping" -b "$blackscreen" 
+    sleep 0.1
+    echo "Your airplay server started succesfully"
 fi
