@@ -58,7 +58,9 @@ GCC 5 or later is required.
 
 # Building on desktop Linux:
 
-For building on Ubuntu 18.04 or 20.04, follow these steps:
+For building on desktop linux, follow these steps as per your distribution:
+
+## Ubuntu 18.04 or 20.04
 ```bash
 sudo apt-get install cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev \
     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-libav \
@@ -69,7 +71,25 @@ cmake ..
 make
 ```
 
+## Fedora 33
+```bash
+sudo dnf install cmake avahi-compat-libdns_sd-devel libplist-devel openssl-devel \
+    gstreamer1-plugins-base-devel gstreamer1-libav gstreamer1-vaapi \
+    gstreamer1-plugins-bad-free
+mkdir build
+cd build
+cmake ..
+make
+```
+
 Note: The -b, -r, -l, and -a options are not supported with the gstreamer renderer.
+
+# Global installation
+
+After building, to install the executable on the system permanently (so it can be run from anywhere), simply run the following command:
+```bash
+sudo make install
+```
 
 # Usage
 
@@ -113,10 +133,8 @@ The code in this repository accumulated from various sources over time. Here is 
 * **dsafa22**: Created an [AirPlay 2 mirroring server](https://github.com/dsafa22/AirplayServer)(seems gone now) for Android based on ShairPlay. This project is basically a port of dsafa22's code to the Raspberry Pi, utilizing OpenMAX and OpenSSL for better performance on the Pi. All code in `lib/` concerning mirroring is dsafa22's work. License: GNU LGPLv2.1+
 * **Juho Vähä-Herttua** and contributors: Created an AirPlay audio server called [ShairPlay](https://github.com/juhovh/shairplay), including support for Fairplay based on PlayFair. Most of the code in `lib/` originally stems from this project. License: GNU LGPLv2.1+
 * **EstebanKubata**: Created a FairPlay library called [PlayFair](https://github.com/EstebanKubata/playfair). Located in the `lib/playfair` folder. License: GNU GPL
-* **Joyent, Inc and contributors**: Created an http library called [http-parser](https://github.com/nodejs/http-parser). Located at `lib/http_parser.(c|h)`. License: MIT
-* **Google, Inc and contributors**: Created an implementation of curve 25519 called [curve25519-donna](https://github.com/agl/curve25519-donna). Located in the `lib/curve25519` folder. License: 3-Clause BSD
+* **Joyent, Inc and contributors**: Created an http library called [llhttp](https://github.com/nodejs/llhttp). Located at `lib/llhttp/`. License: MIT
 * **Team XBMC**: Managed to show a black background for OpenMAX video rendering. This code is used in the video renderer. License: GNU GPL
-* **Orson Peters and contributors**: An implementation of [Ed25519](https://github.com/orlp/ed25519) signatures. Located in `lib/ed25519`, License: ZLIB; Depends on LibTomCrypt, License: Public Domain
 * **Alex Izvorski and contributors**: Wrote [h264bitstream](https://github.com/aizvorski/h264bitstream), a library for manipulation h264 streams. Used for reducing delay in the Raspberry Pi video pipeline. Located in the `renderers/h264-bitstream` folder. License: GNU LGPLv2.1
 
 
@@ -129,7 +147,6 @@ Your contributions are more than welcome!
 
 # Todo
 
-* Use OpenSSL for the elliptic curve crypto?
 * Bug: Sometimes cannot be stopped?
 
 # Changelog

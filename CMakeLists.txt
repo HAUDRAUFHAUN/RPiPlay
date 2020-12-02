@@ -6,8 +6,6 @@ set (CMAKE_CXX_STANDARD 11)
 
 set (RENDERER_FLAGS "")
 
-add_subdirectory(lib/curve25519)
-add_subdirectory(lib/ed25519)
 add_subdirectory(lib/playfair)
 add_subdirectory(lib/llhttp)
 add_subdirectory(lib)
@@ -19,4 +17,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${RENDERER_FLAGS}" )
 add_executable( rpiplay rpiplay.cpp)
 target_link_libraries ( rpiplay renderers airplay )
 
-install(PROGRAMS rpiplay DESTINATION bin)
+install(TARGETS rpiplay RUNTIME DESTINATION bin)
